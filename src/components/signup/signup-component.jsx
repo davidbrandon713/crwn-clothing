@@ -17,8 +17,6 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   }
@@ -35,10 +33,15 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
      } catch (err) {
-      if (err.code === 'auth/email-already-in-use') {
-        alert('Cannot create user. Email already in use.');
-      } else {
-        console.log('Error creating the user', err);
+      switch(err.code) {
+        case 'auth/email-already-in-use':
+          alert('Email already in use.');
+          break;
+        case 'auth/invalid-password':
+          alert('Password must contain at least 6 characters.');
+          break;
+        default:
+          console.log('Error creating the user', err);
       }
      }
 
@@ -46,7 +49,6 @@ const SignUpForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormFields({...formFields, [name]: value})
   };
 
