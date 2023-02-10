@@ -31,3 +31,17 @@ export const Total = styled.span`
   margin-left: auto;
   font-size: 36px;
 `;
+
+export const ClearButton = styled.span`
+  color: red;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    text-shadow: black 1px 1px 7px;
+  }
+
+  &:active {
+    color: pink;
+  }
+`;

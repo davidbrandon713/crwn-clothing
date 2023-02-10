@@ -44,6 +44,10 @@ export const deleteItemFromCart = (cartItems, productToDelete) => {
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
+export const clearCartItems = () => {
+  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, []);
+}
+
 export const setIsCartOpen = (boolean) => {
   return createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean);
 };

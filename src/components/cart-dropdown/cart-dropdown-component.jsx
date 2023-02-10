@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart-selector';
-import { setIsCartOpen } from '../../store/cart/cart-action';
+import { setIsCartOpen, clearCartItems } from '../../store/cart/cart-action';
 import CartItem from '../cart-item/cart-item-component';
 import Button from "../button/button-component";
 
-import { CartDropdownContainer, CartItems, EmptyMessage } from './cart-dropdown-styles';
+import { CartDropdownContainer, CartItems, EmptyMessage, ClearButton } from './cart-dropdown-styles';
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,10 @@ const CartDropdown = () => {
   const goToCheckoutHandler = () => {
     dispatch(setIsCartOpen(false));
     navigate('/checkout');
+  }
+
+  const clearCartHandler = () => {
+    dispatch(clearCartItems());
   }
 
   return (
@@ -27,6 +31,7 @@ const CartDropdown = () => {
         }
       </CartItems>
       <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
+      <ClearButton onClick={clearCartHandler}>CLEAR CART</ClearButton>
     </CartDropdownContainer>
   )
 }

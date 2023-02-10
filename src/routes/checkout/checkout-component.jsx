@@ -1,12 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart-selector';
+import { clearCartItems } from '../../store/cart/cart-action';
 import CheckoutItem from '../../components/checkout-item/checkout-item-component';
 
-import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout-styles';
+import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total, ClearButton } from './checkout-styles';
 
 const Checkout = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+
+  const clearCartHandler = () => {
+    dispatch(clearCartItems());
+  }
 
   return (
     <CheckoutContainer>
@@ -24,7 +30,7 @@ const Checkout = () => {
           <span>Price</span>
         </HeaderBlock>
         <HeaderBlock>
-          <span>Remove</span>
+          <ClearButton onClick={clearCartHandler}>Remove</ClearButton>
         </HeaderBlock>
 
       </CheckoutHeader>

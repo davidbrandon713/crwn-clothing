@@ -5,7 +5,7 @@ export const ProductCardContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height 400px;
   align-items: center;
   position: relative;
 
@@ -25,7 +25,7 @@ export const ProductCardContainer = styled.div`
     width: 80%;
     opacity: 0.85;
     position: absolute;
-    top: 255px;
+    top: 305px;
     display: none;
   }
 `;
