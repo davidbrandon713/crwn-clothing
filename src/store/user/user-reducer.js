@@ -17,7 +17,7 @@ export const userReducer = (state = INITIAL_STATE, action = {}) => {
     case USER_ACTION_TYPES.SIGN_OUT_FAILED:
       return { ...state, error: payload };
     case USER_ACTION_TYPES.SIGN_OUT_SUCCESS:
-      return { ...state, currentUser: null};
+      return { ...state, currentUser: null };
     default:
       return state;
   }

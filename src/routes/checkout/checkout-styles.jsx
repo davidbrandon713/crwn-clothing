@@ -38,7 +38,7 @@ export const ClearButton = styled.span`
 
   &:hover {
     color: red;
-    text-shadow: black 1px 1px 7px;
+    text-shadow: grey 1px 1px 7px;
   }
 
   &:active {

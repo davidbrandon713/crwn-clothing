@@ -106,10 +106,6 @@ export function* onSignOutStart() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut);
 };
 
-export function* onSignOutSuccess() {
-  
-}
-
 export function* userSagas() {
   yield all([
     call(onCheckUserSession), 

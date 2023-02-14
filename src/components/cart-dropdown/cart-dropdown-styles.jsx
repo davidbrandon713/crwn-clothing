@@ -41,7 +41,7 @@ export const ClearButton = styled.div`
 
   &:hover {
     color: red;
-    text-shadow: black 1px 1px 7px;
+    text-shadow: grey 1px 1px 7px;
   }
 
   &:active {
