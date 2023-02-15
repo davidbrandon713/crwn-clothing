@@ -7,7 +7,7 @@ import { selectCurrentUser } from '../../store/user/user-selector';
 
 import { BUTTON_TYPE_CLASSES } from '../button/button-component';
 
-import { FormContainer, PaymentButton } from './payment-form-styles';
+import { FormContainer, PaymentButton, Warning } from './payment-form-styles';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -39,7 +39,7 @@ const PaymentForm = () => {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: currentUser ? currentUser.displayName : 'David Brandon'
+          name: currentUser ? currentUser.displayName : 'Guest'
         },
       },
     });
@@ -57,6 +57,8 @@ const PaymentForm = () => {
 
   return (
     <FormContainer onSubmit={paymentHandler}>
+      <Warning>*&nbsp;*&nbsp;*&nbsp;&nbsp;Must disable adblock to simulate payment&nbsp;&nbsp;*&nbsp;*&nbsp;*</Warning>
+      <Warning>4242 4242 4242 4242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;04/24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42424</Warning>
       <h2>Card Payment:</h2>
       <CardElement />
       <PaymentButton
