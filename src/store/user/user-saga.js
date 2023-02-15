@@ -24,7 +24,7 @@ import {
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
     const userSnapshot = yield call(createUserDocumentFromAuth, userAuth, additionalDetails);
-    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data}));
+    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (err) {
     yield put(signInFailed(err));
   }
@@ -43,6 +43,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
   try {
     const { user } = yield call(signInAuthUserWithEmailAndPassword, email, password);
     yield call(getSnapshotFromUserAuth, user);
+    
   } catch (err) {
     yield put(signInFailed(err));
   }
