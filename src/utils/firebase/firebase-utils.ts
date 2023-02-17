@@ -26,8 +26,6 @@ import {
 
 import { Category } from '../../store/categories/category-types';
 
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyBaCGTW__iFgnjlSAylkp6RHGlIx_PI14o",
   authDomain: "crwn-db-e718e.firebaseapp.com",

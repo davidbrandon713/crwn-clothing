@@ -57,7 +57,7 @@ const PaymentForm = () => {
 
   return (
     <FormContainer onSubmit={paymentHandler}>
-      <Warning>*&nbsp;*&nbsp;*&nbsp;&nbsp;Must disable adblock to simulate payment&nbsp;&nbsp;*&nbsp;*&nbsp;*</Warning>
+      <Warning>*&nbsp;*&nbsp;*&nbsp;&nbsp;Adblock will throw errors in console&nbsp;&nbsp;*&nbsp;*&nbsp;*</Warning>
       <Warning>4242 4242 4242 4242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;04/24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;242&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42424</Warning>
       <h2>Card Payment:</h2>
       <CardElement />
