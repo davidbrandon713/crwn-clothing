@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../form-input/form-input-component";
 import { signUpStart } from "../../store/user/user-action";
 import Button from "../button/button-component";
 
-import { SignUpContainer, H2 } from './signup-styles';
+import { SignUpContainer } from './signup-styles';
 
 
 const defaultFormFields = {
@@ -25,7 +26,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       alert('Passwords do not match.');
@@ -37,12 +38,12 @@ const SignUpForm = () => {
       navigate('/');
       resetFormFields();
      } catch (err) {
-      switch(err.code) {
-        case 'auth/email-already-in-use':
+      switch((err as AuthError).code) {
+        case AuthErrorCodes.EMAIL_EXISTS:
           alert('Email already in use.');
           break;
-        case 'auth/invalid-password':
-          alert('Password must contain at least 6 characters.');
+        case AuthErrorCodes.INVALID_PASSWORD:
+          alert('Invalid password');
           break;
         default:
           console.log('Error creating the user', err);
@@ -51,14 +52,14 @@ const SignUpForm = () => {
 
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({...formFields, [name]: value})
   };
 
   return (
     <SignUpContainer>
-      <H2>Don't have an account?</H2>
+      <h2>Don't have an account?</h2>
       <span>Sign up with email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput label='Display Name' type='text' onChange={handleChange} name='displayName' value={displayName} required />

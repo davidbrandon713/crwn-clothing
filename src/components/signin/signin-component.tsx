@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../form-input/form-input-component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button-component";
 import { emailSignInStart, googleSignInStart } from "../../store/user/user-action";
 
-import { SignInContainer, H2, ButtonsContainer } from './signin-styles';
+import { SignInContainer, ButtonsContainer } from './signin-styles';
 
 
 const defaultFormFields = {
@@ -28,7 +28,7 @@ const SignInForm = () => {
     navigate('/');
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -41,14 +41,14 @@ const SignInForm = () => {
 
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({...formFields, [name]: value})
   };
 
   return (
     <SignInContainer>
-      <H2>Already have an account?</H2>
+      <h2>Already have an account?</h2>
       <span>Sign in</span>
       <form onSubmit={handleSubmit}>
         <FormInput label='Email' type='email' onChange={handleChange} name='email' value={email} required />

@@ -1,6 +1,12 @@
+import { FC } from 'react';
+import { DirectoryCategory } from '../directory/directory-component';
 import { DirectoryItemContainer, BackgroundImage, Body } from './directory-item-styles';
 
-const DirectoryItem = ({ category }) => {
+type DirectoryItemProps = {
+  category: DirectoryCategory;
+};
+
+const DirectoryItem: FC<DirectoryItemProps> = ({ category }) => {
   const { imageUrl, title, route } = category;
   return(
     <DirectoryItemContainer>
