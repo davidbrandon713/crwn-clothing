@@ -56,21 +56,41 @@ export const Img = styled.img`
   height: 95%;
   object-fit: cover;
   margin-bottom: 5px;
+
+  @media screen and (max-width: 800px) {
+    height: 94%;
+  }
 `;
 
 export const Footer = styled.div`
   width: 100%;
   height: 5%;
+  margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+
+  @media screen and (max-width: 800px) {
+    height: 6%;
+    font-size: 15px;
+  }
 `;
 
 export const Name = styled.span`
   width: 90%;
-  margin-bottom: 15px;
+  text-align: left;
+
+  @media screen and (max-width: 800px) {
+    width: 85%;
+    overflow: hidden;
+  }
 `;
 
 export const Price = styled.span`
   width: 10%;
+  text-align: right;
+
+  @media screen and (max-width: 800px) {
+    width: 15%;
+  }
 `;
