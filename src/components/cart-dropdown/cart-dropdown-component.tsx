@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart-selector';
@@ -12,14 +13,19 @@ const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
 
-  const goToCheckoutHandler = () => {
+  // useCallback memo-izes the function itself
+  // useMemo memo-izes the return value of the function
+
+  const goToCheckoutHandler = useCallback(() => {
     dispatch(setIsCartOpen(false));
     navigate('/checkout');
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const clearCartHandler = () => {
+  const clearCartHandler = useCallback(() => {
     dispatch(clearCartItems());
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <CartDropdownContainer>
