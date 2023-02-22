@@ -40,7 +40,7 @@ export const Body = styled(Link)`
 
 export const DirectoryItemContainer = styled.div`
   min-width: 30%;
-  height: 300px;
+  height: 360px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -68,5 +68,9 @@ export const DirectoryItemContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `;
